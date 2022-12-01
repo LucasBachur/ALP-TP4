@@ -24,7 +24,7 @@ initEnv = M.empty
 -- lleve una traza de ejecución (además de manejar errores y estado).
 -- y dar su instancia de mónada. Llamarla |StateErrorTrace|. 
 newtype StateErrorTrace a =
-  SET {runSET:: Env -> Either Error (Pair a (Env,String))}
+  SET {runSET:: Env -> (Either Error (Pair a Env), String)}
 
 instance Functor StateErrorTrace where
   fmap = liftM
@@ -34,13 +34,11 @@ instance Applicative StateErrorTrace where
   (<*>) = ap
 
 instance Monad StateErrorTrace where
-  return x = SET (\s -> Right (x :!: (s,"")))
+  return x = SET (\s -> (Right (x :!: s),""))
   m >>= f = SET (\s -> case runSET m s of
-                            Left e -> Left e
-                            Right (x :!: (s',t)) ->
-                               case runSET (f x) s' of
-                                  Left e2 -> Left e2
-                                  Right (x' :!: (s'',t')) -> Right (x' :!: (s'',t++t')) 
+                            (Left e, t) -> (Left e, t)
+                            (Right (x :!: s'), t) -> 
+                               let (m, t') = runSET (f x) s' in (m, t++t')
                           )
 
 -- Ejercicio 3.b: Resolver en Monad.hs
@@ -48,26 +46,26 @@ instance Monad StateErrorTrace where
 
 -- Ejercicio 3.c: Dar una instancia de MonadTrace para StateErrorTrace.
 instance MonadTrace StateErrorTrace where
-  addTrace st = SET (\s -> Right (() :!: (s,st))) 
+  addTrace st = SET (\s -> (Right (() :!: s), st)) 
 
 -- Ejercicio 3.d: Dar una instancia de MonadError para StateErrorTrace.
 instance MonadError StateErrorTrace where
-  throw e = SET (\s -> Left e)
+  throw e = SET (\s -> (Left e, ""))
 
 -- Ejercicio 3.e: Dar una instancia de MonadState para StateErrorTrace.
 instance MonadState StateErrorTrace where
   lookfor v = SET (\s -> case M.lookup v s of
-                              Just n -> Right (n :!: (s,""))
-                              _ -> Left UndefVar)
-  update v i = SET (\s -> Right (() :!: (M.insert v i s,"")))
+                              Just n -> (Right (n :!: s), "")
+                              _ -> (Left UndefVar, ""))
+  update v i = SET (\s -> (Right (() :!: M.insert v i s), ""))
 
 -- Ejercicio 3.f: Implementar el evaluador utilizando la monada StateErrorTrace.
 -- Evalua un programa en el estado nulo
 
-eval :: Comm -> Either Error (Env, String)
+eval :: Comm -> Either (Error, String) (Env, String)
 eval p = case runSET (stepCommStar p) initEnv of
-            Right (_ :!: (s,t)) -> Right (s,t)
-            Left e -> Left e
+            (Right (_ :!: s), t) -> Right (s, t)
+            (Left e, t) -> Left (e, t)
 
 -- Evalua multiples pasos de un comando, hasta alcanzar un Skip
 stepCommStar :: (MonadState m, MonadError m, MonadTrace m) => Comm -> m ()
