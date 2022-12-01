@@ -110,15 +110,15 @@
   (major1) == 0 && (major2) == 3 && (minor) <= 2)
 #endif /* MIN_VERSION_strict */
 
-/* tool gcc-11 */
+/* tool gcc-9 */
 #ifndef TOOL_VERSION_gcc
-#define TOOL_VERSION_gcc "11"
+#define TOOL_VERSION_gcc "9"
 #endif /* TOOL_VERSION_gcc */
 #ifndef MIN_TOOL_VERSION_gcc
 #define MIN_TOOL_VERSION_gcc(major1,major2,minor) (\
-  (major1) <  11 || \
-  (major1) == 11 && (major2) <  0 || \
-  (major1) == 11 && (major2) == 0 && (minor) <= 0)
+  (major1) <  9 || \
+  (major1) == 9 && (major2) <  0 || \
+  (major1) == 9 && (major2) == 0 && (minor) <= 0)
 #endif /* MIN_TOOL_VERSION_gcc */
 
 /* tool ghc-8.8.3 */
@@ -154,17 +154,6 @@
   (major1) == 2 && (major2) == 23 && (minor) <= 0)
 #endif /* MIN_TOOL_VERSION_haddock */
 
-/* tool happy-1.19.12 */
-#ifndef TOOL_VERSION_happy
-#define TOOL_VERSION_happy "1.19.12"
-#endif /* TOOL_VERSION_happy */
-#ifndef MIN_TOOL_VERSION_happy
-#define MIN_TOOL_VERSION_happy(major1,major2,minor) (\
-  (major1) <  1 || \
-  (major1) == 1 && (major2) <  19 || \
-  (major1) == 1 && (major2) == 19 && (minor) <= 12)
-#endif /* MIN_TOOL_VERSION_happy */
-
 /* tool hpc-0.67 */
 #ifndef TOOL_VERSION_hpc
 #define TOOL_VERSION_hpc "0.67"
@@ -187,17 +176,6 @@
   (major1) == 0 && (major2) == 68 && (minor) <= 5)
 #endif /* MIN_TOOL_VERSION_hsc2hs */
 
-/* tool pkg-config-0.29.2 */
-#ifndef TOOL_VERSION_pkg_config
-#define TOOL_VERSION_pkg_config "0.29.2"
-#endif /* TOOL_VERSION_pkg_config */
-#ifndef MIN_TOOL_VERSION_pkg_config
-#define MIN_TOOL_VERSION_pkg_config(major1,major2,minor) (\
-  (major1) <  0 || \
-  (major1) == 0 && (major2) <  29 || \
-  (major1) == 0 && (major2) == 29 && (minor) <= 2)
-#endif /* MIN_TOOL_VERSION_pkg_config */
-
 /* tool runghc-8.8.3 */
 #ifndef TOOL_VERSION_runghc
 #define TOOL_VERSION_runghc "8.8.3"
@@ -209,15 +187,15 @@
   (major1) == 8 && (major2) == 8 && (minor) <= 3)
 #endif /* MIN_TOOL_VERSION_runghc */
 
-/* tool strip-2.37 */
+/* tool strip-2.34 */
 #ifndef TOOL_VERSION_strip
-#define TOOL_VERSION_strip "2.37"
+#define TOOL_VERSION_strip "2.34"
 #endif /* TOOL_VERSION_strip */
 #ifndef MIN_TOOL_VERSION_strip
 #define MIN_TOOL_VERSION_strip(major1,major2,minor) (\
   (major1) <  2 || \
-  (major1) == 2 && (major2) <  37 || \
-  (major1) == 2 && (major2) == 37 && (minor) <= 0)
+  (major1) == 2 && (major2) <  34 || \
+  (major1) == 2 && (major2) == 34 && (minor) <= 0)
 #endif /* MIN_TOOL_VERSION_strip */
 
 #ifndef CURRENT_COMPONENT_ID

@@ -40,7 +40,7 @@ instance Monad StateError where
 
 -- Ejercicio 2.b: Dar una instancia de MonadError para StateError:
 
-instance MondadError StateError where
+instance MonadError StateError where
   throw e = StateError (\s -> Left e)
 
 -- Ejercicio 2.c: Dar una instancia de MonadState para StateError:

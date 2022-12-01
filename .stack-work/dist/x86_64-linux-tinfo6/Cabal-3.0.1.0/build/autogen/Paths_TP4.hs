@@ -29,12 +29,12 @@ version :: Version
 version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
-bindir     = "/home/nico/Escritorio/ceci/facu/ALP/2022/TPs-master/2022/TP4/Code/TP4/.stack-work/install/x86_64-linux-tinfo6/65df6e31238d2625b6ca21b3fbe26ba87f5bf20e82625c2d663153d3487681c7/8.8.3/bin"
-libdir     = "/home/nico/Escritorio/ceci/facu/ALP/2022/TPs-master/2022/TP4/Code/TP4/.stack-work/install/x86_64-linux-tinfo6/65df6e31238d2625b6ca21b3fbe26ba87f5bf20e82625c2d663153d3487681c7/8.8.3/lib/x86_64-linux-ghc-8.8.3/TP4-0.1.0.0-K9Va0eQRrZxApPTManPQNU"
-dynlibdir  = "/home/nico/Escritorio/ceci/facu/ALP/2022/TPs-master/2022/TP4/Code/TP4/.stack-work/install/x86_64-linux-tinfo6/65df6e31238d2625b6ca21b3fbe26ba87f5bf20e82625c2d663153d3487681c7/8.8.3/lib/x86_64-linux-ghc-8.8.3"
-datadir    = "/home/nico/Escritorio/ceci/facu/ALP/2022/TPs-master/2022/TP4/Code/TP4/.stack-work/install/x86_64-linux-tinfo6/65df6e31238d2625b6ca21b3fbe26ba87f5bf20e82625c2d663153d3487681c7/8.8.3/share/x86_64-linux-ghc-8.8.3/TP4-0.1.0.0"
-libexecdir = "/home/nico/Escritorio/ceci/facu/ALP/2022/TPs-master/2022/TP4/Code/TP4/.stack-work/install/x86_64-linux-tinfo6/65df6e31238d2625b6ca21b3fbe26ba87f5bf20e82625c2d663153d3487681c7/8.8.3/libexec/x86_64-linux-ghc-8.8.3/TP4-0.1.0.0"
-sysconfdir = "/home/nico/Escritorio/ceci/facu/ALP/2022/TPs-master/2022/TP4/Code/TP4/.stack-work/install/x86_64-linux-tinfo6/65df6e31238d2625b6ca21b3fbe26ba87f5bf20e82625c2d663153d3487681c7/8.8.3/etc"
+bindir     = "/mnt/c/Users/Lucas/Documents/LCC/ALP/ALP-tp4/.stack-work/install/x86_64-linux-tinfo6/1985604e1220dcace26e4bb2251f96240c4726fd51bb630601bf391290406fcd/8.8.3/bin"
+libdir     = "/mnt/c/Users/Lucas/Documents/LCC/ALP/ALP-tp4/.stack-work/install/x86_64-linux-tinfo6/1985604e1220dcace26e4bb2251f96240c4726fd51bb630601bf391290406fcd/8.8.3/lib/x86_64-linux-ghc-8.8.3/TP4-0.1.0.0-K9Va0eQRrZxApPTManPQNU"
+dynlibdir  = "/mnt/c/Users/Lucas/Documents/LCC/ALP/ALP-tp4/.stack-work/install/x86_64-linux-tinfo6/1985604e1220dcace26e4bb2251f96240c4726fd51bb630601bf391290406fcd/8.8.3/lib/x86_64-linux-ghc-8.8.3"
+datadir    = "/mnt/c/Users/Lucas/Documents/LCC/ALP/ALP-tp4/.stack-work/install/x86_64-linux-tinfo6/1985604e1220dcace26e4bb2251f96240c4726fd51bb630601bf391290406fcd/8.8.3/share/x86_64-linux-ghc-8.8.3/TP4-0.1.0.0"
+libexecdir = "/mnt/c/Users/Lucas/Documents/LCC/ALP/ALP-tp4/.stack-work/install/x86_64-linux-tinfo6/1985604e1220dcace26e4bb2251f96240c4726fd51bb630601bf391290406fcd/8.8.3/libexec/x86_64-linux-ghc-8.8.3/TP4-0.1.0.0"
+sysconfdir = "/mnt/c/Users/Lucas/Documents/LCC/ALP/ALP-tp4/.stack-work/install/x86_64-linux-tinfo6/1985604e1220dcace26e4bb2251f96240c4726fd51bb630601bf391290406fcd/8.8.3/etc"
 
 getBinDir, getLibDir, getDynLibDir, getDataDir, getLibexecDir, getSysconfDir :: IO FilePath
 getBinDir = catchIO (getEnv "TP4_bindir") (\_ -> return bindir)
